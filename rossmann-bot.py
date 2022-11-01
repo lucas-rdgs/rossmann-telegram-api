@@ -84,7 +84,7 @@ def parse_message(message):
             store_id = 'error'
 
     else:
-        store_id == 'start'
+        store_id = 'start'
 
     return chat_id, store_id
 
