@@ -116,7 +116,7 @@ def index():
         chat_id, store_id = parse_message(message)
         
         d1 = predict(data)
-        list_of_stores = np.unique(d1['store'].values)
+        list_of_stores = str(np.unique(d1['store'].values))
 
         if store_id == 'start':
             send_message(chat_id, 'Digite um código de loja para iniciar') 
