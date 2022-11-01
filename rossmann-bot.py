@@ -78,6 +78,7 @@ def parse_message(message):
 
     try:
         store_id = int(store_id)
+
     except ValueError:
 
         store_id = 'error'
@@ -94,7 +95,12 @@ def index():
         message = request.get_json()
 
         chat_id, store_id = parse_message(message)
-        
+
+        if store_id == '/start':
+            send_message('Digite um código de loja para iniciar') 
+            return Response('Ok', status=200)      
+
+
         if store_id != 'error':
             # carregar dados
             data = load_dataset(store_id)
@@ -110,14 +116,17 @@ def index():
                 msg = 'A loja número {} venderá ${:,.2f} nas próximas 6 semanas'.format(d2['store'].values[0], d2['prediction'].values[0])
 
                 send_message(chat_id, msg)
+                send_message(chat_id, 'Para continuar, insira outro código identificador')
                 return Response('Ok', status=200)
 
             else:
                 send_message(chat_id, 'Esta loja não está disponível')
+                send_message(chat_id, 'Insira outro identificador')
                 return Response('Ok', status=200)
 
         else:
             send_message(chat_id, 'Código de loja inválido')
+            send_message(chat_id, 'Insira um código válido')
             return Response('Ok', status=200)
 
     else:
