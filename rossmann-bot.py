@@ -115,16 +115,9 @@ def index():
 
         chat_id, store_id = parse_message(message)
         
-        d1 = predict(data)
-        list_of_stores = str(np.unique(d1['store'].values))
-
         if store_id == 'start':
             send_message(chat_id, 'Digite um código de loja para iniciar') 
             return Response('Ok', status=200)      
-
-        elif store_id == 'stores':
-            send_message(chat_id, list_of_stores)
-            return Response('Ok', status=200)
 
         elif store_id != 'error':
             # carregar dados
