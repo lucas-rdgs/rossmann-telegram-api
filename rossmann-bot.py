@@ -115,7 +115,7 @@ def index():
         chat_id, store_id = parse_message(message)
 
         if store_id == 'start':
-            send_message('Digite um código de loja para iniciar') 
+            send_message(chat_id, 'Digite um código de loja para iniciar') 
             return Response('Ok', status=200)      
 
 
