@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import requests
 import json
 import os
@@ -113,11 +114,17 @@ def index():
         message = request.get_json()
 
         chat_id, store_id = parse_message(message)
+        
+        d1 = predict(data)
+        list_of_stores = np.unique(d1['store'].values)
 
         if store_id == 'start':
             send_message(chat_id, 'Digite um código de loja para iniciar') 
             return Response('Ok', status=200)      
 
+        elif store_id == 'stores':
+            send_message(chat_id, list_of_stores)
+            return Response('Ok', status=200)
 
         elif store_id != 'error':
             # carregar dados
@@ -125,7 +132,7 @@ def index():
 
             if data != 'error':
                 # previsão
-                d1 = predict(data)
+#                d1 = predict(data)
 
                 # cálculo
                 d2 = d1[['store', 'prediction']].groupby('store').sum().reset_index()
