@@ -124,6 +124,11 @@ def index():
                 send_message(chat_id, 'Insira outro identificador')
                 return Response('Ok', status=200)
 
+        elif store_id == '/start':
+            send_message(chat_id, 'Código de loja inválido')
+            send_message(chat_id, 'Insira um código válido')
+            return Response('Ok', status=200)
+
         else:
             send_message(chat_id, 'Código de loja inválido')
             send_message(chat_id, 'Insira um código válido')
