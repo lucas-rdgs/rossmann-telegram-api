@@ -17,7 +17,7 @@ TOKEN = '5619162120:AAGnpWldLR-hjo7a1prM1ZE1SfZyP6juTsE'
 # https://api.telegram.org/bot5619162120:AAGnpWldLR-hjo7a1prM1ZE1SfZyP6juTsE/sendMessage?chat_id=1999802448&text=Hi, Lucas
 
 # Webhook Heroku
-# https://api.telegram.org/bot5619162120:AAGnpWldLR-hjo7a1prM1ZE1SfZyP6juTsE/setWebhook?url=https://rossmann-api-6d9r.onrender.com/
+# https://api.telegram.org/bot5619162120:AAGnpWldLR-hjo7a1prM1ZE1SfZyP6juTsE/setWebhook?url=https://rossmann-api-wjbh.onrender.com/
 
 def send_message(chat_id, text):
     url = 'https://api.telegram.org/bot{}/'.format(TOKEN)
@@ -59,7 +59,7 @@ def load_dataset(store_id):
 def predict(data):
     # Chamada da API
     # url = 'https://rossmann-test-lr.herokuapp.com/rossmann/predict'
-    url = 'https://rossmann-api-6d9r.onrender.com/rossmann/predict'
+    url = 'https://rossmann-api-wjbh.onrender.com/rossmann/predict'
     header = {'Content-type': 'application/json'} 
     data = data
 
